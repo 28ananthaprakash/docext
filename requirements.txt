@@ -4,6 +4,7 @@ json-repair
 litellm
 loguru
 mdpd
+modal
 numpy
 pandas
 pdf2image

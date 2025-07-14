@@ -212,6 +212,7 @@ def gradio_app(
     vllm_server_host: str,
     vllm_server_port: int,
     max_gen_tokens: int,
+    launch: bool = False,  # New parameter
 ):
     # set vlm_model_url env variable
     hosted_model_url = f"http://{vllm_server_host}:{vllm_server_port}"
@@ -251,6 +252,7 @@ def gradio_app(
                     model_name, max_img_size, concurrency_limit, max_gen_tokens
                 )
 
+    if launch:
         logger.info(f"Launching gradio app on port {gradio_port}")
         demo.launch(
             auth=("admin", "admin"),
@@ -259,6 +261,7 @@ def gradio_app(
             server_port=gradio_port,
             show_error=True,
         )
+    return demo
 
 
 def main(
